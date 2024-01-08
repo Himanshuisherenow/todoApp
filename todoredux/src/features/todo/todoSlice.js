@@ -57,7 +57,7 @@ export const todoSlice = createSlice({
 
       if (index !== -1) {
         state.todos[index].compeleted = !state.todos[index].compeleted;
-        state.todos[index].editAble = !state.todos[index].editAble;
+        if(state.todos[index].editAble){state.todos[index].editAble = !state.todos[index].editAble;}
         localStorage.setItem("todos", JSON.stringify(state.todos));
       }
   

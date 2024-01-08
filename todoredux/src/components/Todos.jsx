@@ -61,7 +61,7 @@ console.log(todo.editAble)
                   if (todo.editAble) {
                     dispatch(isEditAble({ id : todo.id }))
                   } else dispatch(isEditAble({ id :todo.id }));
-                  console.log("next"+ todo.editAble)
+                 
               }}
             
               disabled={todo.compeleted}
