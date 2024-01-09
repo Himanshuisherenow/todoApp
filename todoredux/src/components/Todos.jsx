@@ -6,13 +6,10 @@ function Todos() {
   const dispatch = useDispatch();
   const Todos = useSelector(state => state.todos)
   
-
   const  handleUpdate = (e,id)=>{
 
-   
     dispatch(updateTodo({ id, newText : e.target.value}))
   }
-
 
   return (
     <>
@@ -28,7 +25,8 @@ function Todos() {
 
       {Todos.map((todo) => (
         <li
-          className="mt-4 flex w-2/3 h-10 justify-between items-center rounded-xl bg-zinc-800 px-4 py-2"
+          className={`mt-4 flex w-2/3 h-10 justify-between items-center rounded-xl todo.editAble ? "border-white/10 px-2" : "border-transparent"
+        } ${todo.compeleted ? "bg-gray-700" : ""} bg-zinc-800 px-4 py-2`}
           key={todo.id}
         >
           
@@ -43,7 +41,7 @@ function Todos() {
               type="text"
               className={`border text-zinc-50 outline-none w-full bg-transparent rounded-lg ${
                   todo.editAble ? "border-white/10 px-2" : "border-transparent"
-              } ${todo.compeleted ? "line-through" : ""}`}
+              } ${todo.compeleted ? "line-through bg-gray-700" : ""}`}
               value={todo.text}
               onChange={(e) => {if(!todo.compeleted)handleUpdate(e,todo.id)} }
             
@@ -57,7 +55,7 @@ function Todos() {
                 () => {
              
                   if (todo.compeleted) return;
-console.log(todo.editAble)
+                  console.log(todo.editAble)
                   if (todo.editAble) {
                     dispatch(isEditAble({ id : todo.id }))
                   } else dispatch(isEditAble({ id :todo.id }));
